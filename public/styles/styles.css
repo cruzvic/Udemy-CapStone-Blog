@@ -1,3 +1,19 @@
-h1 {
-    color: blue;
+/*! tailwindcss v4.0.17 | MIT License | https://tailwindcss.com */
+.flex {
+  display: flex;
+}
+.w-screen {
+  width: 100vw;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-row {
+  flex-direction: row;
+}
+.justify-items-center {
+  justify-items: center;
+}
+.rounded-full {
+  border-radius: calc(infinity * 1px);
 }
