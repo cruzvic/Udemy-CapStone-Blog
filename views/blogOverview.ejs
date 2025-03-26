@@ -10,9 +10,13 @@
 <body>
     <h1>Blog Overview</h1>
     <main>
-        <section id="blog-posts">
-            <!-- Blog posts will be dynamically inserted here -->
-        </section>
+        <div class="flex flex-col gap-4 justify-items-center align-items-center py-8 px-16 w-screen">
+            <h3><%= blogPost.title %></h3>
+            <p><%= blogPost.author %></p>
+            <h5><%= blogPost.text %></h5>
+            <p><%= blogPost.creationDate %></p>
+            <p><%= blogPost.blogID %></p>
+        </div>
     </main>
 </body>
 <%- include('partials/footer.ejs') %>

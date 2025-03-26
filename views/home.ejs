@@ -5,12 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="/styles/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <%- include('partials/header.ejs') %>
 <body>
     <h1>Welcome to My Blog</h1>
     <main>
-        <p>This is the home page of the blog.</p>
+        <h2 class="h2">Blog posts</h2>
+        <div class="flex flex-row gap-4 justify-items-center align-items-center py-8 px-16 w-screen">
+            <% if (blogPosts.length > 0) {
+                blogPosts.forEach(post => { %>
+                    <a href="/post/<%= post.blogID %>">
+                        <div class="card flex flex-col">
+                            <h3><%= post.title %></h3>
+                            <p><%= post.author %></p>
+                            <h5><%= post.text %></h5>
+                            <p><%= post.creationDate %></p>
+                            <p><%= post.blogID %></p>
+                        </div>
+                    </a>
+            <% });
+            } else {%>
+            <p>No blog posts yet :/</p>
+            <% } %>
+        </div>
+        <a href="/create-post"><div class="bg-grey rounded-full">Create Post</div></a>
     </main>
 </body>
 <%- include('partials/footer.ejs') %>
