@@ -17,6 +17,7 @@
             <p><%= blogPost.creationDate %></p>
             <p><%= blogPost.blogID %></p>
         </div>
+        <a href="/edit-post/<%= blogPost.blogID %>"><div class="bg-grey rounded-full">Edit Post</div></a>
     </main>
 </body>
 <%- include('partials/footer.ejs') %>

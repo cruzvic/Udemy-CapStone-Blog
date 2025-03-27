@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
+import methodOverride from 'method-override';
 
 const app = express();
 const port = 3000;
@@ -22,12 +23,31 @@ function blogPost(title, author, text) {
 function addBlogPost(title, author, text) {
     const newPost = new blogPost(title, author, text);
     blogPosts.push(newPost);
+};
+
+// Function to update blog post if changes were made
+function updateBlogPost(blogID, title, author, text) {
+    const post = blogPosts.find((post) => post.blogID == blogID);
+    if (!post) {
+        throw new Error("Blog post not found");
+    }
+    if (title.length > 0) {
+        post.title = title;
+    }
+    if (author.length > 0){
+        post.author = author;
+    } 
+
+    if (text.length > 0) {
+        post.text = text;
+    }
 }
 
 // MIDDLEWARES
 app.use(express.static("public"));
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 // ROUTES
 app.get("/", (req, res) => {
@@ -61,9 +81,25 @@ app.post("/create-post", (req, res) => {
     });
 });
 
-app.put("/post/:postId", (req, res) => {
-    // TODO: UPDATE POST
-    res.render("blogCreation.ejs");
+app.get("/edit-post/:postID", (req, res) => {
+    const postID = req.params.postID;
+    const post = blogPosts.find((post) => post.blogID == postID);
+    if (post) {
+        res.render("blogEdit.ejs", {
+            blogPost: post
+        })
+    } else {
+        res.status(404).send("Post not found")
+    }
+});
+
+app.put("/edit-post/:postID", (req, res) => {
+    const postID = req.params.postID;
+    updateBlogPost(postID, req.body.title, req.body.author, req.body.text);
+    const post = blogPosts.find((post) => post.blogID == postID);
+    res.render("blogOverview.ejs", {
+        blogPost: post
+    });
 });
 
 app.delete("/post/:postID", (req, res) => {
