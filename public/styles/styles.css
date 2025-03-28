@@ -2,9 +2,6 @@
 .flex {
   display: flex;
 }
-.hidden {
-  display: none;
-}
 .w-screen {
   width: 100vw;
 }

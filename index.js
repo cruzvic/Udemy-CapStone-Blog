@@ -102,8 +102,10 @@ app.put("/edit-post/:postID", (req, res) => {
     });
 });
 
-app.delete("/post/:postID", (req, res) => {
-    // TODO: DELETE POST
+app.delete("/delete-post/:postID", (req, res) => {
+    const postID = req.params.postID;
+    blogPosts = blogPosts.filter((post) => post.blogID != postID);
+    res.redirect("/");
 });
 
 app.listen(port, () => {
