@@ -5,32 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="/styles/styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<%- include('partials/header.ejs') %>
-<body>
-    <h1 class="text-4xl font-bold text-blue-600">Welcome to My Blog</h1>
-    <main>
-        <h2 class="h2">Blog posts</h2>
-        <div class="flex flex-row gap-4 justify-items-center align-items-center py-8 px-16 w-screen">
-            <% if (blogPosts.length > 0) {
-                blogPosts.forEach(post => { %>
-                    <a href="/post/<%= post.blogID %>">
-                        <div class="card flex flex-col">
-                            <h3><%= post.title %></h3>
-                            <p><%= post.author %></p>
-                            <h5><%= post.text %></h5>
-                            <p><%= post.creationDate %></p>
-                            <p><%= post.blogID %></p>
-                        </div>
-                    </a>
-            <% });
-            } else {%>
-            <p>No blog posts yet :/</p>
-            <% } %>
-        </div>
-        <a href="/create-post"><div class="bg-grey rounded-full">Create Post</div></a>
-    </main>
+<body class="body-container">
+    <div class="web-container">
+        <%- include('partials/header.ejs') %>
+        <main class="main-container">
+            <h1 class="h1">Welcome to My Blog</h1>
+            <h2 class="text-3xl font-bold text-gray-500">Blog posts</h2>
+            <div class="flex flex-row gap-4 justify-items-center align-items-center py-8 px-16 overflow-x-auto">
+                <% if (blogPosts.length > 0) {
+                    blogPosts.forEach(post => { %>
+                        <a href="/post/<%= post.blogID %>">
+                            <div class="flex flex-col gap-4 bg-gray-200 rounded-2xl p-8 w-xs">
+                                <h3 class="text-xl font-bold"><%= post.title %></h3>
+                                <p class="text-sm text-gray-500">By <%= post.author %></p>
+                                <p class="text-base"><%= post.text %></p>
+                                <p class="text-xs text-gray-400"><%= post.creationDate %></p>
+                                <span class="text-xs text-gray-400">ID: <%= post.blogID %></span>
+                            </div>
+                        </a>
+                <% });
+                } else {%>
+                <p>No blog posts yet :/</p>
+                <% } %>
+            </div>
+            <a href="/create-post" class="flex align-center justify-center"><button class="btn-primary">Create Post</button></a>
+        </main>
+    </div>
+    <%- include('partials/footer.ejs') %>
 </body>
-<%- include('partials/footer.ejs') %>
 </html></html>

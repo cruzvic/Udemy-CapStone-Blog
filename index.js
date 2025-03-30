@@ -108,6 +108,10 @@ app.delete("/delete-post/:postID", (req, res) => {
     res.redirect("/");
 });
 
+app.use((req, res) => {
+    res.status(404).render('404.ejs');
+})
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
