@@ -5,6 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "node index.js",
+    "build:css": "npx tailwindcss -i ./public/src/input.css -o ./public/styles/styles.css",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-server": "nodemon index.js",
     "watch-tailwind": "tailwindcss -i ./public/src/input.css -o ./public/styles/styles.css --watch",
