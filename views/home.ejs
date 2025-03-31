@@ -16,7 +16,7 @@
                 <% if (blogPosts.length > 0) {
                     blogPosts.forEach(post => { %>
                         <a href="/post/<%= post.blogID %>">
-                            <div class="flex flex-col gap-4 bg-gray-200 rounded-2xl p-8 w-xs">
+                            <div class="flex flex-col gap-4 bg-gray-200 rounded-2xl p-8 lg:w-xs">
                                 <h3 class="text-xl font-bold"><%= post.title %></h3>
                                 <p class="text-sm text-gray-500">By <%= post.author %></p>
                                 <p class="text-base"><%= post.text %></p>

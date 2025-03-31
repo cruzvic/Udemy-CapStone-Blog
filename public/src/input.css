@@ -36,11 +36,11 @@
 }
 
 .web-container {
-    @apply flex flex-col mx-60 gap-16 flex-grow font-mono;
+    @apply flex flex-col lg:mx-60 sm:mx-30 mx-5 flex-grow font-mono;
 }
 
 .main-container {
-    @apply flex flex-col gap-16;
+    @apply flex flex-col gap-16 mt-16;
 }
 
 .body-container {

@@ -199,14 +199,8 @@
   .h-fit {
     height: fit-content;
   }
-  .min-h-screen {
-    min-height: 100vh;
-  }
   .w-fit {
     width: fit-content;
-  }
-  .w-xs {
-    width: var(--container-xs);
   }
   .flex-grow {
     flex-grow: 1;
@@ -228,6 +222,9 @@
   }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
+  }
+  .gap-16 {
+    gap: calc(var(--spacing) * 16);
   }
   .gap-20 {
     gap: calc(var(--spacing) * 20);
@@ -308,6 +305,11 @@
   .text-white {
     color: var(--color-white);
   }
+  .lg\:w-xs {
+    @media (width >= 64rem) {
+      width: var(--container-xs);
+    }
+  }
 }
 .btn-primary {
   cursor: pointer;
@@ -370,14 +372,20 @@
   line-height: var(--tw-leading, var(--text-xl--line-height));
 }
 .web-container {
-  margin-inline: calc(var(--spacing) * 60);
+  margin-inline: calc(var(--spacing) * 5);
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  gap: calc(var(--spacing) * 16);
   font-family: var(--font-mono);
+  @media (width >= 40rem) {
+    margin-inline: calc(var(--spacing) * 30);
+  }
+  @media (width >= 64rem) {
+    margin-inline: calc(var(--spacing) * 60);
+  }
 }
 .main-container {
+  margin-top: calc(var(--spacing) * 16);
   display: flex;
   flex-direction: column;
   gap: calc(var(--spacing) * 16);
